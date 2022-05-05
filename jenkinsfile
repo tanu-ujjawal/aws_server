@@ -1,0 +1,20 @@
+pipeline {
+    agent { docker { image 'golang:1.17.5-alpine' } }
+    stages {
+        stage('build role') {
+            steps {
+                sh 'role.json'
+            }
+        }
+                stage('build secgrp') {
+            steps {
+                sh 'secgrp.json'
+            }
+        }
+                stage('build ec2') {
+            steps {
+                sh 'ec2.json'
+            }
+        }
+    }
+}
